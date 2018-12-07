@@ -39,8 +39,7 @@ defmodule KafkaEx.Mixfile do
       {:dialyxir, "~> 1.0.0-rc.3", only: :dev},
       {:excoveralls, "~> 0.7", only: :test},
       {:ex_doc, "~> 0.18", only: :dev},
-      {:snappy,
-       git: "https://github.com/fdmanana/snappy-erlang-nif", only: [:dev, :test]}
+      {:snappyer, "~> 1.2", only: [:dev, :test]}
     ]
   end
 

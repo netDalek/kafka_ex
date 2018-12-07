@@ -35,7 +35,7 @@ for details of these features.
 The standard approach for adding dependencies to an Elixir application applies:
 add KafkaEx to the deps list in your project's mix.exs file.
 You may also optionally add
-[snappy-erlang-nif](https://github.com/fdmanana/snappy-erlang-nif) (required
+[snappyer](https://github.com/zmstone/snappyer) (required
 only if you want to use snappy compression).
 
 ```elixir
@@ -48,7 +48,7 @@ defmodule MyApp.Mixfile do
       # add to your existing deps
       {:kafka_ex, "~> 0.9.0"},
       # if using snappy compression
-      {:snappy, git: "https://github.com/fdmanana/snappy-erlang-nif"}
+      {:snappyer, "~> 1.2"}
     ]
   end
 end
