@@ -17,6 +17,8 @@ defmodule KafkaEx.Compression do
   @gzip_attribute 1
   @snappy_attribute 2
 
+  @snappy_module Application.get_env(:kafka_ex, :snappy_module, :snappy)
+
   @type attribute_t :: integer
   @type compression_type_t :: :snappy | :gzip
 
@@ -41,7 +43,7 @@ defmodule KafkaEx.Compression do
   """
   @spec compress(compression_type_t, binary) :: {binary, attribute_t}
   def compress(:snappy, data) do
-    {:ok, compressed_data} = :snappyer.compress(data)
+    {:ok, compressed_data} = @snappy_module.compress(data)
     {compressed_data, @snappy_attribute}
   end
 
@@ -58,7 +60,7 @@ defmodule KafkaEx.Compression do
         <<valsize::32-unsigned, value::size(valsize)-binary, rest::binary>>,
         so_far
       ) do
-    {:ok, decompressed_value} = :snappyer.decompress(value)
+    {:ok, decompressed_value} = @snappy_module.decompress(value)
     snappy_decompress_chunk(rest, so_far <> decompressed_value)
   end
 end
