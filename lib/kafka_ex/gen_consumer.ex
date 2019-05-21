@@ -563,8 +563,6 @@ defmodule KafkaEx.GenConsumer do
       fetch_options: fetch_options
     }
 
-    Process.flag(:trap_exit, true)
-
     {:ok, state, 0}
   end
 
